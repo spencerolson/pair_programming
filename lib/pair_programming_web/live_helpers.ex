@@ -1,14 +1,14 @@
 defmodule PairProgrammingWeb.LiveHelpers do
-  def assign_defaults(%{"user_id" => user_id} = session, socket) do
-    socket = assign(socket, current_user: Accounts.get_user!(user_id))
+  import Phoenix.LiveView
+  alias PairProgramming.Accounts
 
-    socket =
-      if socket.assigns.current_user.confirmed_at do
-        socket
-      else
-        redirect(socket, to: "/login")
-      end
+  def assign_defaults(socket, %{"user_id" => user_id}) do
+    socket = assign_new(socket, :current_user,fn -> Accounts.get_user!(user_id) end)
 
-    {:ok, socket}
+    if socket.assigns.current_user do
+      socket
+    else
+      redirect(socket, to: "/")
+    end
   end
 end

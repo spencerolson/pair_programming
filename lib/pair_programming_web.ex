@@ -47,6 +47,8 @@ defmodule PairProgrammingWeb do
       use Phoenix.LiveView,
         layout: {PairProgrammingWeb.LayoutView, "live.html"}
 
+      import PairProgrammingWeb.LiveHelpers
+
       unquote(view_helpers())
     end
   end

@@ -18,6 +18,7 @@ defmodule PairProgrammingWeb.Router do
   pipeline :protected do
     plug Pow.Plug.RequireAuthenticated,
       error_handler: Pow.Phoenix.PlugErrorHandler
+    plug PairProgramming.AssignUser
   end
 
   scope "/" do

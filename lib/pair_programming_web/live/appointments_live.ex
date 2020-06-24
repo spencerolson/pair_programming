@@ -1,15 +1,13 @@
 defmodule PairProgrammingWeb.AppointmentsLive do
 	use PairProgrammingWeb, :live_view
 
+	alias PairProgrammingWeb.LiveHelpers
 	alias PairProgramming.PairingSessions
 
-	def mount(_params, _session, socket) do
-		socket =
-			assign(
-				socket,
-				pairing_sessions: PairingSessions.list_pairing_sessions(),
-				show_menu: false
-			)
+	def mount(_params, session, socket) do
+		socket = socket
+			|> LiveHelpers.assign_defaults(session)
+			|> assign_default_options()
 		{:ok, socket}
 	end
 
@@ -21,6 +19,14 @@ defmodule PairProgrammingWeb.AppointmentsLive do
 	def handle_event("show_pairing_session", _values, socket) do
 		IO.puts "handling show_pairing_session!"
 		{:noreply, socket}
+	end
+
+	defp assign_default_options(socket) do
+		assign(
+			socket,
+			pairing_sessions: PairingSessions.list_pairing_sessions(),
+			show_menu: false
+		)
 	end
 
 	defp status("") do
