@@ -1,5 +1,6 @@
 defmodule PairProgrammingWeb.Router do
   use PairProgrammingWeb, :router
+  use Pow.Phoenix.Router
 
   pipeline :browser do
     plug :accepts, ["html"]
@@ -14,8 +15,19 @@ defmodule PairProgrammingWeb.Router do
     plug :accepts, ["json"]
   end
 
-  scope "/", PairProgrammingWeb do
+  pipeline :protected do
+    plug Pow.Plug.RequireAuthenticated,
+      error_handler: Pow.Phoenix.PlugErrorHandler
+  end
+
+  scope "/" do
     pipe_through :browser
+
+    pow_routes()
+  end
+
+  scope "/", PairProgrammingWeb do
+    pipe_through [:browser, :protected]
 
     live "/", AppointmentsLive
     live "/v1", PairingSessionLive

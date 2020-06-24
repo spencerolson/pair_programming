@@ -1,9 +1,13 @@
-body {
+body, .alert {
   @apply antialiased relative bg-cool-gray-200 font-sans;
 }
 
 header {
   @apply mb-8;
+}
+
+.alert {
+  @apply font-bold;
 }
 
 .container {
