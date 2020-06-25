@@ -26,7 +26,7 @@ defmodule PairProgrammingWeb.PairingSessionLive do
               </div>
               <div class="details">
                 <span class="price">
-                  <%= pairing_session.creator %>
+                  <%= pairing_session.user.email %>
                 </span>
                 <span class="type">
                   <%= pairing_session.label %>

@@ -14,9 +14,10 @@ defmodule PairProgramming.Application do
       # Start the PubSub system
       {Phoenix.PubSub, name: PairProgramming.PubSub},
       # Start the Endpoint (http/https)
-      PairProgrammingWeb.Endpoint
+      PairProgrammingWeb.Endpoint,
       # Start a worker by calling: PairProgramming.Worker.start_link(arg)
       # {PairProgramming.Worker, arg}
+      Pow.Store.Backend.MnesiaCache
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html

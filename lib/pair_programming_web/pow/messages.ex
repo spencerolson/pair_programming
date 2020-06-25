@@ -3,8 +3,6 @@ defmodule PairProgrammingWeb.Pow.Messages do
   use Pow.Extension.Phoenix.Messages,
     extensions: [PowResetPassword]
 
-  import PairProgrammingWeb.Gettext
-
   def invalid_credentials(_conn) do
     "Invalid credentails. Please try again."
   end

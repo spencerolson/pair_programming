@@ -27,10 +27,12 @@ config :logger, :console,
 config :phoenix, :json_library, Jason
 
 config :pair_programming, :pow,
-  user: PairProgramming.Users.User,
+  cache_store_backend: Pow.Store.Backend.MnesiaCache,
+  controller_callbacks: PairProgrammingWeb.Pow.ControllerCallbacks,
+  messages_backend: PairProgrammingWeb.Pow.Messages,
   repo: PairProgramming.Repo,
-  web_module: PairProgrammingWeb,
-  messages_backend: PairProgrammingWeb.Pow.Messages
+  user: PairProgramming.Users.User,
+  web_module: PairProgrammingWeb
 
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.

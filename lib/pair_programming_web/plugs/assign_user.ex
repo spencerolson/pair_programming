@@ -4,6 +4,10 @@ defmodule PairProgramming.AssignUser do
   def init(opts), do: opts
 
   def call(conn, _params) do
-    put_session(conn, "user_id", conn.assigns.current_user.id)
+    user = Pow.Plug.current_user(conn)
+
+    conn
+    |> put_session("user_id", user.id)
+    |> put_session("live_socket_id", "users_socket:#{user.id}")
   end
 end

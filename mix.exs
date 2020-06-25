@@ -20,7 +20,7 @@ defmodule PairProgramming.MixProject do
   def application do
     [
       mod: {PairProgramming.Application, []},
-      extra_applications: [:logger, :runtime_tools]
+      extra_applications: [:logger, :mnesia, :runtime_tools]
     ]
   end
 

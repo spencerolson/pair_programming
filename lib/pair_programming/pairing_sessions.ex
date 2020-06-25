@@ -18,7 +18,7 @@ defmodule PairProgramming.PairingSessions do
 
   """
   def list_pairing_sessions do
-    Repo.all(PairingSession)
+    Repo.all(from p in PairingSession, preload: [:user, :partner])
   end
 
   @doc """
