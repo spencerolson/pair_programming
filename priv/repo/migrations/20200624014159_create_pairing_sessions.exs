@@ -3,15 +3,14 @@ defmodule PairProgramming.Repo.Migrations.CreatePairingSessions do
 
   def change do
     create table(:pairing_sessions) do
-      add :title, :string
-      add :description, :text
-      add :user_id, references(:users)
+      add :title, :string, null: false
+      add :description, :text, null: false
+      add :user_id, references(:users), null: false
       add :partner_id, references(:users)
-      add :date, :date
-      add :label, :string
+      add :date, :date, null: false
+      add :tags, :string, default: "", null: false
 
       timestamps()
     end
-
   end
 end

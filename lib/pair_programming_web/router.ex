@@ -31,6 +31,8 @@ defmodule PairProgrammingWeb.Router do
     pipe_through [:browser, :protected]
 
     live "/", AppointmentsLive
+    live "/my_appointments", MyAppointmentsLive
+    live "/appointments/new", AppointmentLive
     live "/v1", PairingSessionLive
     live "/demo", PageLive, :index
   end

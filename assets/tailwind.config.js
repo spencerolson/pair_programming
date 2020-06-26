@@ -19,6 +19,7 @@ module.exports = {
     },
   },
   variants: {
+    opacity: ["disabled"]
     //backgroundColor: ["responsive", "hover", "focus", "active"]
   },
   plugins: [require("@tailwindcss/ui")],

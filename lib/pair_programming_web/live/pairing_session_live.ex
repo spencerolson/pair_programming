@@ -29,7 +29,7 @@ defmodule PairProgrammingWeb.PairingSessionLive do
                   <%= pairing_session.user.email %>
                 </span>
                 <span class="type">
-                  <%= pairing_session.label %>
+                  <%= pairing_session.tags %>
                 </span>
               </div>
             </div>

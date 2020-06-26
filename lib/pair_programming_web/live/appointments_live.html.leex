@@ -24,44 +24,7 @@
         </thead>
         <tbody class="bg-white">
           <%= for pairing_session <- @pairing_sessions do %>
-            <tr>
-              <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                <div class="flex items-center">
-                  <div class="flex-shrink-0 h-10 w-10">
-                    <img class="h-10 w-10 rounded-full" src="<%= User.avatar_path(pairing_session.user)%>" alt="avatar" />
-                  </div>
-                  <div class="ml-4">
-                    <div class="text-sm leading-5 font-medium text-gray-900"><%= pairing_session.user.email %>
-                    </div>
-                    <div class="text-sm leading-5 text-gray-500"><%= pairing_session.user.email %>
-                    </div>
-                  </div>
-                </div>
-              </td>
-              <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                <div class="text-sm leading-5 text-gray-900"><%= pairing_session.title %>
-                </div>
-                <div class="text-sm leading-5 text-gray-500"><%= pairing_session.title %>
-                </div>
-              </td>
-              <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full <%= status_classes(pairing_session) %>">
-                  <%= status(pairing_session) %>
-                </span>
-              </td>
-              <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                <div class="flex-shrink-0 h-10 w-10">
-                  <img class="h-10 w-10 rounded-full" src="<%= User.avatar_path(pairing_session.partner)%>" alt="" />
-                </div>
-              </td>
-              <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200 text-sm leading-5 text-gray-500">
-                <%= pairing_session.date %>
-              </td>
-              <td class="px-6 py-4 whitespace-no-wrap text-right border-b border-gray-200 text-sm leading-5 font-medium">
-                <a href="#" class="text-indigo-600 hover:text-indigo-900">Edit
-                </a>
-              </td>
-            </tr>
+            <%= render PairingSessionLineItemView, "pairing_session_line_item_template.html", pairing_session: pairing_session %>
           <% end %>
         </tbody>
       </table>

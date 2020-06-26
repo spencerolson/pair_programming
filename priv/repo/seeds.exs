@@ -35,7 +35,7 @@ mary =  %User{
 %PairingSession{
 	title: "Elixir Help",
 	description: "Need some help learning how the pipe operator works.",
-	label: "elixir",
+	tags: "elixir phoenix",
 	partner: nil,
 	user: spencer,
 	date: ~D[2020-06-23]
@@ -45,7 +45,7 @@ mary =  %User{
 %PairingSession{
 	title: "Mysterious Timebomb",
 	description: "Debugging a timebomb in Canvas. Only happens on Sundays.",
-	label: "canvas",
+	tags: "canvas timebomb",
 	partner: nil,
 	user: cletus,
 	date: ~D[2020-06-09]
@@ -55,7 +55,7 @@ mary =  %User{
 %PairingSession{
 	title: "Rails Basics",
 	description: "Coming from a Node background and I'm totally new to Rails. Could use some help with the basics.",
-	label: "rails",
+	tags: "rails",
 	partner: nil,
 	user: mary,
 	date: ~D[2020-05-22]
@@ -65,7 +65,7 @@ mary =  %User{
 %PairingSession{
 	title: "React Hooks Help",
 	description: "I'm familiar with React but I am having a tough time figuring out a good use case for Hooks, and would love some help!",
-	label: "react",
+	tags: "react",
 	partner: mary,
 	user: spencer,
 	date: ~D[2020-05-28]
@@ -75,7 +75,7 @@ mary =  %User{
 %PairingSession{
 	title: "React Contexts: How Do They Work?",
 	description: "Wut are contexts please help!!!",
-	label: "react",
+	tags: "",
 	partner: spencer,
 	user: cletus,
 	date: ~D[2020-06-18]
