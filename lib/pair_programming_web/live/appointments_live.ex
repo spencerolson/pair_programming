@@ -19,7 +19,6 @@ defmodule PairProgrammingWeb.AppointmentsLive do
   end
 
   def handle_event("show_pairing_session", _values, socket) do
-    IO.puts "handling show_pairing_session!"
     {:noreply, socket}
   end
 
