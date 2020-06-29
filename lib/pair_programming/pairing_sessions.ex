@@ -50,9 +50,14 @@ defmodule PairProgramming.PairingSessions do
 
   """
   def create_pairing_session(attrs \\ %{}) do
-    %PairingSession{}
-    |> PairingSession.changeset(attrs)
-    |> Repo.insert()
+    {:ok, pairing_session} =
+      %PairingSession{}
+      |> PairingSession.changeset(attrs)
+      |> Repo.insert()
+
+    pairing_session = Repo.preload(pairing_session, [:user, :partner])
+    broadcast(pairing_session, :pairing_session_created)
+    {:ok, pairing_session}
   end
 
   @doc """
@@ -100,5 +105,15 @@ defmodule PairProgramming.PairingSessions do
   """
   def change_pairing_session(%PairingSession{} = pairing_session, attrs \\ %{}) do
     PairingSession.changeset(pairing_session, attrs)
+  end
+
+  def subscribe do
+    Phoenix.PubSub.subscribe(PairProgramming.PubSub, "pairing_sessions")
+  end
+
+  defp broadcast({:error, _reason} = error, _event), do: error
+
+  defp broadcast(pairing_session, event) do
+    Phoenix.PubSub.broadcast(PairProgramming.PubSub, "pairing_sessions", {event, pairing_session})
   end
 end

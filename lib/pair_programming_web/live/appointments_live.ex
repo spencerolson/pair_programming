@@ -7,6 +7,7 @@ defmodule PairProgrammingWeb.AppointmentsLive do
 
   def mount(_params, session, socket) do
     if connected?(socket) do
+      PairingSessions.subscribe()
       Process.send_after(self(), :hide_flash, :timer.seconds(3))
     end
 
@@ -36,5 +37,16 @@ defmodule PairProgrammingWeb.AppointmentsLive do
 
   def handle_info(:hide_flash, socket) do
     {:noreply, clear_flash(socket)}
+  end
+
+  def handle_info({:pairing_session_created, pairing_session}, socket) do
+    {
+      :noreply,
+      update(
+        socket,
+        :pairing_sessions,
+        fn pairing_sessions -> [pairing_session | pairing_sessions] end
+      )
+    }
   end
 end

@@ -13,11 +13,6 @@
               <%= live_redirect "New Session", to: Routes.live_path(@socket, PairProgrammingWeb.AppointmentLive), class: "ml-4 px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 #{if @active_tab == :new_session, do: "bg-gray-900"}" %>
 
               <%= live_redirect "My Sessions", to: Routes.live_path(@socket, PairProgrammingWeb.MyAppointmentsLive), class: "ml-4 px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 #{if @active_tab == :my_sessions, do: "bg-gray-900"}" %>
-
-              <a href="#" class="ml-4 px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700">Calendar
-              </a>
-              <a href="#" class="ml-4 px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700">Reports
-              </a>
             </div>
           </div>
         </div>
@@ -33,7 +28,7 @@
             <div class="ml-3 relative">
               <div>
                 <button phx-click="toggle_menu" phx-blur="close_menu" class="max-w-xs flex items-center text-sm rounded-full text-white focus:outline-none focus:shadow-solid" id="user-menu" aria-label="User menu" aria-haspopup="true">
-                  <img class="h-8 w-8 rounded-full" src="https://avatars0.githubusercontent.com/u/6925979?s=400&u=d8dfa9fe7f48e3bdc8dd39a6a352844af335cd51&v=4" alt="" />
+                  <img class="h-8 w-8 rounded-full" src="<%= PairProgramming.Users.User.avatar_path(@current_user) %>" alt="" />
                 </button>
               </div>
               <!--
